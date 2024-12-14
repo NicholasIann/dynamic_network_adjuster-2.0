@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Network Adjuster</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Network Adjuster Dashboard</h1>
+    <h2>Traffico di rete</h2>
+    <p>Bytes inviati: {{ traffic_sent }}</p>
+    <p>Bytes ricevuti: {{ traffic_received }}</p>
+
+    <h2>Politiche QoS</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrizione</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for policy in qos_status.get('policies', []) %}
+            <tr>
+                <td>{{ policy.id }}</td>
+                <td>{{ policy.name }}</td>
+                <td>{{ policy.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
