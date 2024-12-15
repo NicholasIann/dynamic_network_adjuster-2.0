@@ -9,10 +9,10 @@ app = Flask(__name__)
 # Crea una connessione al client Neutron
 def get_neutron_client():
     return neutron_client.Client(
-        username=os.getenv('OS_USERNAME'),
-        password=os.getenv('OS_PASSWORD'),
-        project_name=os.getenv('OS_PROJECT_NAME'),
-        auth_url=os.getenv('OS_AUTH_URL'),
+        username=os.getenv('OS_USERNAME','admin'),
+        password=os.getenv('OS_PASSWORD','password'),
+        project_name=os.getenv('OS_PROJECT_NAME','demo'),
+        auth_url=os.getenv('OS_AUTH_URL','http://10.0.2.15/identity'),
         user_domain_name=os.getenv('OS_USER_DOMAIN_NAME', 'Default'),
         project_domain_name=os.getenv('OS_PROJECT_DOMAIN_NAME', 'Default')
     )
